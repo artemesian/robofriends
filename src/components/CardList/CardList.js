@@ -10,12 +10,12 @@ export default function CardList({searchField,robots}) {
 	return (
 		<div className="cardlist-container">
 		{(robots.length===0)?
-			<h2 className="SEGA" style={style}>Loading...⏳</h2>
+			<h2 className="SEGA" style={style}>Loading...<span role="img" aria-label="loading">⏳</span></h2>
 		:
 			(filteredRobots.length !== 0)?
 				filteredRobots.map(robot=><Card id={robot.id} name={robot.name} email={robot.email} key={`key${robot.id}`}/>)
 			:
-				<h2 className="SEGA" style={style}>Ooops Not found😕</h2>
+				<h2 className="SEGA" style={style}>Ooops Not found<span role="img" aria-label="404">😕</span></h2>
 		}
 		</div>
 	)
