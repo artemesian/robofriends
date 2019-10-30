@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import CardList from "./components/CardList/CardList.js";
+import SearchBox from "./components/SearchBox/SearchBox.js";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      searchField : "",
+    }
+  }
+  onSearchField = (val) =>{
+    this.setState({searchField:val})
+  }
+  render() {
+    return (
+      <div className="app center">
+        <h1>RoboFriends</h1>
+        <SearchBox onSearchField={this.onSearchField}/>
+        <CardList searchField={this.state.searchField}/>
+        {console.log(this.state)}
+      </div>
+    );
+  }
 }
 
 export default App;
